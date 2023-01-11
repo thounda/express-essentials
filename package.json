@@ -1,0 +1,19 @@
+{
+  "name": "express-essentials",
+  "version": "1.0.0",
+  "description": "ExpressJS is a minimal, flexible, NodeJS application framework. It is definitely one of the most, if not the most popular framework for no JS. ExpressJS is used to make building websites, web applications, and APIs, as easy as possible using JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thounda/express-essentials.git"
+  },
+  "author": "Thounda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thounda/express-essentials/issues"
+  },
+  "homepage": "https://github.com/thounda/express-essentials#readme"
+}
