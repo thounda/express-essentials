@@ -1,4 +1,4 @@
-# expressjs
+# Express Essentials - expressjs
 ExpressJS is a minimal, flexible, NodeJS application framework. It is definitely one of the most, if not the most popular framework for no JS. ExpressJS is used to make building websites, web applications, and APIs, as easy as possible using JavaScript.
 
 ExpressJS is used to handle and simplify responses from API requests and supports various templating engines to simplify HTML generation. If you're not familiar with templating engines, they're used to create HTML templates with minimal code and give you the ability to feed variables into the templates. To give you a more visual explanation of how NodeJS and ExpressJS work in conjunction with what we consider the front-end of an application or the client, see the diagram below, that outlines the process. 
