@@ -17,19 +17,19 @@ app.get("/", (request, response) => {
 });
 
 // Define a POST method to establish a route
-app.get("/create", (request, response) => {
+app.post("/create", (request, response) => {
   // Define a send method on the response to send a message to the established route
   response.send(`This is a POST request at /create`);
 });
 
 // Define a PUT method to establish a route
-app.get("/edit", (request, response) => {
+app.put("/edit", (request, response) => {
   // Define a send method on the response to send a message to the established route
   response.send(`This is a PUT request at /edit`);
 });
 
 // Define a DELETE method to establish a route
-app.get("/delete", (request, response) => {
+app.delete("/delete", (request, response) => {
   // Define a send method on the response to send a message to the established route
   response.send(`This is a DELETE request at /delete`);
 });
