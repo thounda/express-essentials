@@ -10,10 +10,9 @@ const app = express();
 // create variable for express port #
 const PORT = 3000;
 
-// Define a GET method to establish a route
+// Define a GET method to pull data from JSON file
 app.get("/", (request, response) => {
-  // Define a send method on the response to send a message to the established route
-  response.send(`This is a GET request at /`);
+  response.json(data);
 });
 
 // Define a POST method to establish a route
