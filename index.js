@@ -10,6 +10,12 @@ const app = express();
 // create variable for express port #
 const PORT = 3000;
 
+// Define middleware function, express.static to serve static file from 'public' folder
+app.use(express.static("public"));
+
+// Using the images folder at the route /images
+app.use("/images", express.static("images"));
+
 // Define a GET method to pull data from JSON file
 app.get("/", (request, response) => {
   response.json(data);
