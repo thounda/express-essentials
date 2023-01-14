@@ -22,9 +22,11 @@ app.get("/", (request, response) => {
 });
 
 // GET with Routing Parameters
-app.get("/class/:id", (request, response) => {});
+app.get("/class/:id", (request, response) => {
+  console.log(request.params);
+});
+
 // Route parameters are stored in the request under the property params
-console.log(request.params);
 
 // Define a POST method to establish a route
 app.post("/create", (request, response) => {
