@@ -1,5 +1,5 @@
 // Import the express module
-import express, { response } from "express";
+import express, { request, response } from "express";
 
 // Import mock-data json file
 import data from "./data/mock-data.json";
@@ -20,6 +20,11 @@ app.use("/images", express.static("images"));
 app.get("/", (request, response) => {
   response.json(data);
 });
+
+// GET with Routing Parameters
+app.get("/class/:id", (request, response) => {});
+// Route parameters are stored in the request under the property params
+console.log(request.params);
 
 // Define a POST method to establish a route
 app.post("/create", (request, response) => {
@@ -43,5 +48,5 @@ app.delete("/delete", (request, response) => {
 app.listen(PORT, () => {
   console.log(`The server is running on port ${PORT}!`);
   // Display json data from file via CL
-  console.log(data);
+  // console.log(data);
 });
