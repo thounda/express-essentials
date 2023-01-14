@@ -23,7 +23,14 @@ app.get("/", (request, response) => {
 
 // GET with Routing Parameters
 app.get("/class/:id", (request, response) => {
-  console.log(request.params);
+  // console.log(request.params);  // echo param to terminal
+  // set constant and convert param to a number
+  const studentId = Number(request.params.id);
+  // Set constant to mock JSON data which is an array
+  /*  // Return the student from mock data - matching studentID - via a filter */
+  const student = data.filter((student) => student.id === studentId);
+  // Pass the response using the method SEND to client
+  response.send(student);
 });
 
 // Route parameters are stored in the request under the property params
