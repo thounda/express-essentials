@@ -1,80 +1,95 @@
-// Import the express module
-import express, { request, response } from "express";
-
-// Import mock-data json file
+import express from "express";
 import data from "./data/mock-data.json";
 
-// create variable for the express module
 const app = express();
-
-// create variable for express port #
 const PORT = 3000;
 
-// Define middleware function, express.static to serve static file from 'public' folder
+//Using the public folder at the root (/) of the project
 app.use(express.static("public"));
 
-// Using the images folder at the route /images
+//Using the images folder at the route /images
 app.use("/images", express.static("images"));
 
-// Define a DOWNLOAD method save file to local system
+//GET
+app.get("/", (request, response) => {
+  response.json(data);
+});
+
+//GET - download method
 app.get("/download", (request, response) => {
-  response.download("images/mountain_2.png");
+  response.download("images/mountains_2.png");
 });
 
-// Define a REDIRECT method to redirect to link
+//GET - redirect method
 app.get("/redirect", (request, response) => {
-  response.redirect("https://websitesupport247.com");
+  response.redirect("http://www.websitesupport247.com");
 });
 
-// Define a GET method with next() function - Route Handler
+// Define ROUTE Chaining - multiple (get, post, put) methods together
+app
+  .route("/class")
+  .get((request, response) => {
+    response.send("Retrieve class info");
+  })
+  .post((request, response) => {
+    response.send("Create class info");
+  })
+  .put((request, response) => {
+    response.send("Update class info");
+  });
+
+//Route chaining
+//GET
+// app.get("/class", (request, response) => {
+//   response.send("Retrieve class info");
+// });
+
+//POST
+// app.post("/class", (request, response) => {
+//   response.send("Create class info");
+// });
+
+//PUT
+// app.put("/class", (request, response) => {
+//   response.send("Update class info");
+// });
+
+//GET with next()
 app.get(
   "/next",
   (request, response, next) => {
-    console.log(`The response will be sent by the next function.`);
-    // 1st callback function - next() - set within the route handler
+    console.log("The response will be sent by the next function.");
+
     next();
   },
-  // 2nd callback function within route handler
   (request, response) => {
-    response.send(`I just set up a route with a second callback!`);
+    response.send("I just set up a route with a second callback.");
   }
 );
 
-// GET with Routing Parameters
+//GET with Routing Parameters
 app.get("/class/:id", (request, response) => {
-  // console.log(request.params);  // echo param to terminal
-  // set constant and convert param to a number
   const studentId = Number(request.params.id);
-  // Set constant to mock JSON data which is an array
-  /*  // Return the student from mock data - matching studentID - via a filter */
+
   const student = data.filter((student) => student.id === studentId);
-  // Pass the response using the method SEND to client
   response.send(student);
 });
 
-// Route parameters are stored in the request under the property params
-
-// Define a POST method to establish a route
+//POST
 app.post("/create", (request, response) => {
-  // Define a send method on the response to send a message to the established route
-  response.send(`This is a POST request at /create`);
+  response.send("This is a POST request at /create");
 });
 
-// Define a PUT method to establish a route
+//PUT
 app.put("/edit", (request, response) => {
-  // Define a send method on the response to send a message to the established route
-  response.send(`This is a PUT request at /edit`);
+  response.send("This is a PUT request at /edit");
 });
 
-// Define a DELETE method to establish a route
+//DELETE
 app.delete("/delete", (request, response) => {
-  // Define a send method on the response to send a message to the established route
-  response.send(`This is a DELETE request at /delete`);
+  response.send("This is a DELETE request at /delete");
 });
 
-// Specify the listening port for the express app
 app.listen(PORT, () => {
-  console.log(`The server is running on port ${PORT}!`);
-  // Display json data from file via CL
-  // console.log(data);
+  console.log(`The server is running on port ${PORT}`);
 });
