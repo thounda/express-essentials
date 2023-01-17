@@ -21,6 +21,20 @@ app.get("/", (request, response) => {
   response.json(data);
 });
 
+// Define a GET method with next() function - Route Handler
+app.get(
+  "/next",
+  (request, response, next) => {
+    console.log(`The response will be sent by the next function.`);
+    // 1st callback function - next() - set within the route handler
+    next();
+  },
+  // 2nd callback function within route handler
+  (request, response) => {
+    response.send(`I just set up a route with a second callback!`);
+  }
+);
+
 // GET with Routing Parameters
 app.get("/class/:id", (request, response) => {
   // console.log(request.params);  // echo param to terminal
