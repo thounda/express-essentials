@@ -1,5 +1,5 @@
 import express from "express";
-import data from "./data/mock.json";
+import data from "./data/mock-data.json";
 
 const app = express();
 const PORT = 3000;
