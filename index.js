@@ -16,9 +16,14 @@ app.use(express.static("public"));
 // Using the images folder at the route /images
 app.use("/images", express.static("images"));
 
-// Define a GET method to pull data from JSON file
-app.get("/", (request, response) => {
-  response.json(data);
+// Define a DOWNLOAD method save file to local system
+app.get("/download", (request, response) => {
+  response.download("images/mountain_2.png");
+});
+
+// Define a REDIRECT method to redirect to link
+app.get("/redirect", (request, response) => {
+  response.redirect("https://websitesupport247.com");
 });
 
 // Define a GET method with next() function - Route Handler
