@@ -41,7 +41,9 @@ app.get("/redirect", (request, response) => {
 app
   .route("/class")
   .get((request, response) => {
-    response.send("Retrieve class info");
+    //response.send("Retrieve class info");
+    // Manually throw error to test end point
+    throw new Error();
   })
   .post((request, response) => {
     response.send("Create class info");
@@ -86,6 +88,12 @@ app.put("/edit", (request, response) => {
 //DELETE
 app.delete("/delete", (request, response) => {
   response.send("This is a DELETE request at /delete");
+});
+
+// Error Handling Middleware Function
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something is broken!");
 });
 
 app.listen(PORT, () => {
