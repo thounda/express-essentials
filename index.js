@@ -41,9 +41,9 @@ app.get("/redirect", (request, response) => {
 app
   .route("/class")
   .get((request, response) => {
-    //response.send("Retrieve class info");
+    response.send("Retrieve class info");
     // Manually throw error to test end point
-    throw new Error();
+    // throw new Error();
   })
   .post((request, response) => {
     response.send("Create class info");
