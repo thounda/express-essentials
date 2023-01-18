@@ -17,7 +17,7 @@ app.get("/", (request, response) => {
 
 //GET - download method
 app.get("/download", (request, response) => {
-  response.download("images/mountains_2.png");
+  response.download("images/mountains_2.jpeg");
 });
 
 //GET - redirect method
@@ -25,7 +25,7 @@ app.get("/redirect", (request, response) => {
   response.redirect("http://www.websitesupport247.com");
 });
 
-// Define ROUTE Chaining - multiple (get, post, put) methods together
+//Route chaining
 app
   .route("/class")
   .get((request, response) => {
@@ -37,22 +37,6 @@ app
   .put((request, response) => {
     response.send("Update class info");
   });
-
-//Route chaining
-//GET
-// app.get("/class", (request, response) => {
-//   response.send("Retrieve class info");
-// });
-
-//POST
-// app.post("/class", (request, response) => {
-//   response.send("Create class info");
-// });
-
-//PUT
-// app.put("/class", (request, response) => {
-//   response.send("Update class info");
-// });
 
 //GET with next()
 app.get(
@@ -69,9 +53,11 @@ app.get(
 
 //GET with Routing Parameters
 app.get("/class/:id", (request, response) => {
+  //Middleware: Acess the routing parameters
   const studentId = Number(request.params.id);
 
   const student = data.filter((student) => student.id === studentId);
+  //Everything above this line is middleware
   response.send(student);
 });
 
