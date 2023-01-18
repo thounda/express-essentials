@@ -11,7 +11,8 @@ app.use(express.static("public"));
 app.use("/images", express.static("images"));
 
 // using express.json and express.urlencoded
-app.use(express.json());
+// app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //GET
 app.get("/", (request, response) => {
