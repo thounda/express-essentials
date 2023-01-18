@@ -1,4 +1,4 @@
-import express from "express";
+import express, { request, response } from "express";
 import data from "./data/mock-data.json";
 
 const app = express();
@@ -10,9 +10,20 @@ app.use(express.static("public"));
 //Using the images folder at the route /images
 app.use("/images", express.static("images"));
 
+// using express.json and express.urlencoded
+app.use(express.json());
+
 //GET
 app.get("/", (request, response) => {
   response.json(data);
+});
+
+// POST - express.json and express.urlencoded
+app.post("/item", (request, response) => {
+  // log request to console
+  console.log(request.body);
+  // send request to client
+  response.send(request.body);
 });
 
 //GET - download method
